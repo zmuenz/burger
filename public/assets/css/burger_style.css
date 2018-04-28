@@ -1,3 +1,31 @@
+body {
+    background-image: url("../img/brickwall.png");
+    background-repeat: repeat;
+	height: 100%;
+	margin: 0;
+}
+
+.burger-head {
+    color: #f16a6d;
+}
+
+.devoured-burgers {
+    color: #C0C0C0;
+}
+
+.burgers {
+    padding: 5px 0;
+    color: #434b56;
+}
+
+.devourBtn {
+    margin: 0 0 0 15px;
+}
+
+h3 {
+    color: #434b56;
+}
+
 #burgerImg {
     width: 150px;
     height: auto;

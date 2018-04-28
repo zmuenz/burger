@@ -1,53 +1,51 @@
 <div class="container">
 
-    <div class="row">
+    <div class="row my-5">
         <div class="col-lg-12 col-md-12 col-sm-12">
-            <h1 class="text-center">Eat-Da-Burger!</h1>
-            <img class="mx-auto my-4 d-block" id="burgerImg" src="/assets/img/hamburger-img.jpg">
+            <h1 class="burger-head text-center">Eat-Da-Burger!</h1>
+            <img class="mx-auto my-4 d-block" id="burgerImg" src="/assets/img/burger.svg">
         </div>
     </div>
 
-    <div class="row">
+    <div class="row mb-4">
         <div class="col-lg-6 col-md-6 col-sm-12">
-            <h2>Burgers Available to Eat</h2>
-
-            <ul class="burgers">
+            <h3>Burgers Available to Eat</h3>
+            <hr>
                 {{#each burgers}} {{#unless devoured}}
                 <form action="/api/burgers/{{this.id}}?_method=PUT" method="POST">
-                <p>{{ this.id }}. {{ this.burger_name}}
+                <p class="burgers">{{ this.id }}.) {{ this.burger_name}}
 
-                    <button class="devourBtn" data-id="{{this.id}}" type="submit">Devour it!</button>
+                    <button class="devourBtn btn btn-outline-success" data-id="{{this.id}}" type="submit">Devour it!</button>
 
                 </p>
                 </form>
                 {{/unless}} {{/each}}
-            </ul>
         </div>
 
         <div class="col-lg-6 col-md-6 col-sm-12">
-            <h2>Devoured Burgers</h2>
-
+            <h3>Devoured Burgers</h3>
+            <hr>
             <ul class="devoured-burgers">
                 {{#each burgers}} {{#if devoured}}
-                <p>{{ this.id }}. {{this.burger_name}}</p>
+                <p>{{ this.id }}.) {{this.burger_name}}</p>
                 {{/if}} {{/each}}
             </ul>
         </div>
 
     </div>
 
-    <div class="row">
-        <div class="col-lg-12 col-md-12 col-sm-12">
-            <h2>Add a Burger</h2>
-
+    <div class="row mb-5">
+        <div class="col-md-auto mx-auto">
+            <h3 class="text-center">Add a Burger</h3>
+            <hr>
             <form class="create-burger" action="/api/burgers" method="POST">
 
                 <div class="form-group">
-                    <label for="name">Enter the name of a burger you'd like to eat</label>
+                    <label for="name">Enter the name of a burger you'd like to eat:</label>
                     <textarea class="form-control" id="name" name="burger_name"></textarea>
                 </div>
 
-                <button type="submit" class="btn btn-primary">Submit Burger</button>
+                <button type="submit" class="btn btn-primary btn-block">Add Burger</button>
             </form>
         </div>
     </div>
