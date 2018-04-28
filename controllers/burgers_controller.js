@@ -17,9 +17,9 @@ router.post("/api/burgers", function (req, res) {
     burger.insertOne([
         "burger_name"
     ], [
-        req.body.name
+        req.body.burger_name
     ], function (result) {
-        res.json({ id: result.insertId });
+        res.redirect("/");
     });
 });
 
@@ -32,7 +32,7 @@ router.post("/api/burgers/:id", function (req, res) {
         if (result.changedRows == 0) {
             return res.status(404).end();
         } else {
-            res.status(200).end();
+            res.status(200).redirect("/");
         }
     });
 });
