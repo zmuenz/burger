@@ -2,23 +2,25 @@
 
     <div class="row">
         <div class="col-lg-12 col-md-12 col-sm-12">
-            <h1>Eat-Da-Burger!</h1>
-            <img src="../public/assets/img/hamburger-img.jpg">
+            <h1 class="text-center">Eat-Da-Burger!</h1>
+            <img class="mx-auto my-4 d-block" id="burgerImg" src="/assets/img/hamburger-img.jpg">
         </div>
     </div>
 
     <div class="row">
         <div class="col-lg-6 col-md-6 col-sm-12">
-            <h2>Available Burgers</h2>
+            <h2>Burgers Available to Eat</h2>
 
             <ul class="burgers">
-                {{#each burgers}}
-                    {{#unless devoured}}
-                        <p>{{ this.id }}. {{ this.burger_name}}
-                        <button class="deleteBtn" id={{this.id}} type="button">Devour it!</button>
-                        </p>
-                    {{/unless}}
-                {{/each}}
+                {{#each burgers}} {{#unless devoured}}
+                <form action="/api/burgers/{{this.id}}?_method=PUT" method="POST">
+                <p>{{ this.id }}. {{ this.burger_name}}
+
+                    <button class="devourBtn" data-id="{{this.id}}" type="submit">Devour it!</button>
+
+                </p>
+                </form>
+                {{/unless}} {{/each}}
             </ul>
         </div>
 
@@ -26,11 +28,9 @@
             <h2>Devoured Burgers</h2>
 
             <ul class="devoured-burgers">
-                {{#each burgers}}
-                    {{#if devoured}}
-                        <p>{{ this.id }}. {{this.burger_name}}</p>
-                    {{/if}}
-                {{/each}}
+                {{#each burgers}} {{#if devoured}}
+                <p>{{ this.id }}. {{this.burger_name}}</p>
+                {{/if}} {{/each}}
             </ul>
         </div>
 
@@ -40,11 +40,11 @@
         <div class="col-lg-12 col-md-12 col-sm-12">
             <h2>Add a Burger</h2>
 
-            <form class="create-burger">
+            <form class="create-burger" action="/api/burgers" method="POST">
 
                 <div class="form-group">
-                    <label for="burger">Enter the name of a burger you'd like to eat</label>
-                    <textarea id="ca" name="burger"></textarea>
+                    <label for="name">Enter the name of a burger you'd like to eat</label>
+                    <textarea class="form-control" id="name"></textarea>
                 </div>
 
                 <button type="submit" class="btn btn-primary">Submit Burger</button>
